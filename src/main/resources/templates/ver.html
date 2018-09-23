@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+//
+<head>
+<meta charset="UTF-8" />
+<title>Venta de Boletos</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+	
+	<ul class="list-group">
+					<li class="list-group-item active" th:text="${customer.firstName}"></li>
+					<li class="list-group-item" th:text="${customer.lastName}"></li>
+					<li class="list-group-item" th:text="${customer.email}"></li>
+					<li class="list-group-item" th:text="${customer.createAt}"></li>
+				</ul>
+	
+	
+		<div th:if="${#lists.isEmpty(customer.invoices)}" class="alert alert-info my-4" th:text="'No hay facturas asignadas para el cliente' + ${customer.firstName} + '  '"></div>
+	
+		<table th:if="${not #lists.isEmpty(customer.invoices)}" class="table table-bordered table-striped my-h">
+			<thead>
+				<tr>
+					<th scope="col">Folio</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Total</th>
+				</tr>
+			</thead>
+			<!--tfoot>
+  <tr>
+     <td>Sum</td>
+     <td>$180</td>
+  </tr>
+ </tfoot-->
+			<tbody>
+				<tr th:each="invoice: ${customer.invoices}">
+					<td th:text="${invoice.id}" />
+					<td th:text="${invoice.description}" />
+					<td th:text="${invoice.createAt}" />
+					<td th:text="${invoice.total}" />
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<a th:href="@{/form}">Crear cliente</a>
+
+
+	<!-- <td><a th:href="@{/form/} + ${customer.id}" th:text="'Editar'"
+						class="btn btn-primary btn-xs"></a></td>
+					<td><a th:href="@{/eliminar/} + ${customer.id}"
+						th:text="'Eliminar'" class="btn btn-danger btn-xs"
+						onclick="return confirm('Estas seguro?')"></a></td> -->
+
+
+</body>
+</html>

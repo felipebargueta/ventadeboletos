@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+//
+<head th:replace="layouts/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layouts/layout::header"></header>
+	<div class="container">
+
+
+<form th:action="@{/form}" th:object="${customer}" method="post" >
+	<div class="form-group">
+    	<label for="firstName">Nombre</label>
+    	<input type="text" class="form-control" id="firstName" placeholder="Nombre" th:field="*{firstName}"/>
+    	<small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="form-text text-danger"></small>
+  	</div>
+	<div class="form-group">
+    	<label for="lastName">Apellido</label>
+    	<input type="text" class="form-control" id="lastName" placeholder="Apellido" th:field="*{lastName}"/>
+    	<small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="form-text text-danger"></small>
+  	</div>
+	<div class="form-group">
+    	<label for="email">Correo Electronico</label>
+    	<input type="text" class="form-control" id="email" placeholder="Correo" th:field="*{email}"/>
+    	<small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="form-text text-danger"></small>
+  	</div>
+  	<div class="form-group">
+    	<label for="createAt">Fecha</label>
+    	<input type="text" class="form-control" id="createAt" placeholder="Fecha" th:field="*{createAt}"/>
+    	<small th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}" class="form-text text-danger"></small>
+  	</div>
+  	
+  	<div class="form-group">
+    	<label for="valor">Valor</label>
+    	<input type="text" class="form-control" id="valor" placeholder="valor" th:field="*{valor}"/>
+    	<small th:if="${#fields.hasErrors('valor')}" th:errors="*{valor}" class="form-text text-danger"></small>
+  	</div>
+  	
+  	<input type="submit" value="Crear cliente" class="btn btn-primary"/>
+  	<a th:href="@{/listar}" class="btn btn-secondary">Regresar</a>
+	<input type="hidden" id="id" th:field="*{id}">
+</form>
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+<footer th:replace="layouts/layout::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+//
+<head th:replace="layouts/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layouts/layout::header"></header>
+<div class="container">
+
+
+	<div class="form-group blu-margin">
+	<label for="name">Cliente</label>
+    <select class="form-control" th:field="${invoice.customer.id}"  id="customerId">
+    <!--option value="0" th:text="select operator" ></option-->
+    <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.firstName} + ' ' + ${customer.lastName}"></option>
+    </select>
+	</div>
+	
+	
+	<div>
+	<div>Detalle de Factura</div>
+	
+	<table class="table">
+ <thead>
+  <tr>
+     <th scope="col">id</th>
+     <th scope="col">Producto</th>
+     <th scope="col">Cantidad</th>     
+     <th scope="col">Precio Unitario</th>
+     <th scope="col">Importe</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr th:each="detail: ${invoice.invoiceDetails}">     
+     <td th:text="${detail.id}"/>
+     <td th:text="${detail.product.name}" />     
+     <td th:text="${detail.quantity}" />     
+     <td th:text="${detail.product.price}" />
+     <td th:text="${detail.product.price} * ${detail.quantity}" />     
+  </tr>
+ </tbody>
+ <tfoot>
+ 	<tr>
+ 	<td colspan="4" style="text-aling:right">Total</td>
+ 	<td th:text="${invoice.total}"></td>
+ 	
+ 	</tr>
+ 
+ </tfoot>
+</table>
+	</div>
+
+
+
+
+
+
+
+
+<a th:href="@{/invoices}" class="btn btn-secondary">Regresar</a>
+<footer th:replace="layouts/layout::footer"></footer>
+</body>
+</html>

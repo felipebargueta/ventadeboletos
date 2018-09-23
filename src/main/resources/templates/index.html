@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+//
+<head th:replace="layouts/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layouts/layout::header"></header>
+	<div class="container">
+
+
+
+
+<main role="main" class="inner cover">
+        <h1 class="cover-heading">Facturación</h1>
+        <p class="lead">Sistema prueba de factura programado en Spring para la Univerdad Gerardo Barrios </p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary">Conozca mas</a>
+        </p>
+      </main>
+
+
+
+<div class="row">
+          <div class="col-lg-4">
+          	
+            <img class="rounded-circle" th:src="@{/img/icono-manos.png}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Clientes</h2>
+            <p>Gestione sus clientes para todas sus platafomas y en solo lugar </p>
+            <p><a class="btn btn-secondary" th:href="@{/listar}" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" th:src="@{/img/Productos.png}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Productos</h2>
+            <p>Cree, Edite, Gestione todos los atributos de sus productos en linea para todos sus sistemas</p>
+            <p><a class="btn btn-secondary" th:href="@{/products}" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" th:src="@{/img/images.png}" alt="Generic placeholder image" width="140" height="140">
+            <h2>Facturas</h2>
+            <p>Genere y administre su facturacion en esta plataforma</p>
+            <p><a class="btn btn-secondary" th:href="@{/invoices}" role="button">View details »</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div>
+
+
+
+
+
+<footer th:replace="layouts/layout::footer"></footer>
+</body>
+</html>

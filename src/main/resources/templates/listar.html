@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+//
+<head th:replace="layouts/layout :: head"></head>
+</head>
+<body>
+<header th:replace="layouts/layout::header"></header>
+<div class="container">
+	<table class="table">
+ <thead>
+  <tr>
+     <th scope="col">id</th>
+     <th scope="col">Nombre</th>
+     <th scope="col">Apellido</th>
+     <th scope="col">Correo</th>
+     <th scope="col">Fecha</th>
+  </tr>
+ </thead>
+ <tbody>
+ 
+  <tr th:each="customer: ${customers}">     
+     <td th:text="${customer.id}"/>
+     <td th:text="${customer.firstName}" />
+     <td th:text="${customer.lastName}" />
+     <td th:text="${customer.email}" />
+     <td th:text="${customer.createAt}" />
+     <td> <a th:href="@{/form/} + ${customer.id}" th:text="'Editar'" 
+             class="btn btn-primary btn-xs" ></a></td>
+     <td> <a th:href="@{/eliminar/} + ${customer.id}" th:text="'Eliminar'" 
+             class="btn btn-danger btn-xs" 
+             onclick="return confirm('Estas seguro?')" ></a></td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<a th:href="@{/form}" class="btn btn-primary">Crear cliente</a>
+<a th:href="@{/}" class="btn btn-secondary">Regresar</a>
+<footer th:replace="layouts/layout::footer"></footer>
+</body>
+</html>
